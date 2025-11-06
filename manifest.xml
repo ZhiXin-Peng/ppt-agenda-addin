@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <Id>2f2a2d2b-6c2f-4b1c-9a28-8f6d3b2dd001</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Agenda Add-in</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Meeting Agenda Generator"/>
+  <Description DefaultValue="Generate an agenda &amp; attendees slides from your calendar; also seed random events."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://localhost:3000/"/>
+
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="SharedRuntime" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="residGetStartedTitle"/>
+            <Description resid="residGetStartedDescription"/>
+            <LearnMoreUrl resid="residLearnMoreUrl"/>
+          </GetStarted>
+
+          <!-- FunctionFile 可指向任务窗格 URL（不一定会被调用，但字段需要有效） -->
+          <FunctionFile resid="residTaskpaneUrl"/>
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Agenda.Group">
+                <Label resid="residGroupLabel"/>
+                <!-- ✅ Group 级别必须有 Icon（这是之前缺的） -->
+                <Icon>
+                  <bt:Image size="16" resid="icon16"/>
+                  <bt:Image size="32" resid="icon32"/>
+                  <bt:Image size="80" resid="icon80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="Agenda.TaskpaneButton">
+                  <Label resid="residButtonLabel"/>
+                  <Supertip>
+                    <Title resid="residButtonLabel"/>
+                    <Description resid="residButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="residTaskpaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="residTaskpaneUrl" DefaultValue="https://localhost:3000/taskpane.html"/>
+        <bt:Url id="residLearnMoreUrl" DefaultValue="https://localhost:3000/"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="residGetStartedTitle" DefaultValue="Meeting Agenda Generator"/>
+        <bt:String id="residGroupLabel" DefaultValue="Agenda"/>
+        <bt:String id="residButtonLabel" DefaultValue="Open Agenda Pane"/>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="residGetStartedDescription" DefaultValue="Generate slides from your calendar and seed random events."/>
+        <bt:String id="residButtonDesc" DefaultValue="Open the agenda add-in task pane."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
