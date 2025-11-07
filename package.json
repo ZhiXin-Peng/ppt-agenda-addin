@@ -18,27 +18,22 @@
     "lint": "office-addin-lint check",
     "lint:fix": "office-addin-lint fix",
     "prettier": "office-addin-lint prettier",
-
-  
     "certs": "office-addin-dev-certs install",
-
- 
     "start": "npm run dev-server",
-
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch",
-
-  
     "dev": "npm run certs && npm run dev-server"
   },
   "dependencies": {
     "core-js": "^3.36.0",
+    "pptxgenjs": "^4.0.1",
     "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.25.4",
+    "@types/node": "^24.10.0",
     "@types/office-js": "^1.0.377",
     "@types/office-runtime": "^1.0.35",
     "acorn": "^8.11.3",
@@ -57,6 +52,8 @@
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
     "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "5.1.0"
