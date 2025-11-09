@@ -26,6 +26,7 @@
     "dev": "npm run certs && npm run dev-server"
   },
   "dependencies": {
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "core-js": "^3.36.0",
     "pptxgenjs": "^4.0.1",
     "regenerator-runtime": "^0.14.1"
